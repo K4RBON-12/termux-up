@@ -1,0 +1,5 @@
+PS1='\[[38;5;39m\]/\[[38;5;40m\]\W\[[38;5;39m\]/=> \[[0m\]'
+shopt -s autocd
+alias la='ls -a'
+alias del='mv -f --target-directory=$HOME/.garbage'
+alias bkp='cp -r -v --backup=t --suffix=.bkp --target-directory=/data/data/com.termux/files/home/storage/downloads/termux_backup/'
