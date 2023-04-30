@@ -6,8 +6,7 @@ pkg upgrade -y
 while true; do
     clear
     echo "Select the desired options:"
-    echo "0. Customize shell"
-    echo "1. git"
+    echo "1. Customize shell"
     echo "2. wget"
     echo "3. python"
     echo "4. android-tools"
@@ -20,15 +19,12 @@ while true; do
     read -p "Enter the option number: " option
 
     case $option in
-        0)
-            echo "Customizing shell"
-            mv -rf bash.backup /data/data/com.termux/files/home/.bashrc
-            mkdir .garbage
-            source ~/.bashrc
-            ;;
         1)
-            echo "Installing git..."
-            pkg install git -y
+            echo "Customizing shell"
+            cp -f bash.backup /data/data/com.termux/files/home/.bashrc
+            mkdir /data/data/com.termux/files/home/.garbage
+            source /data/data/com.termux/files/home/.bashrc
+            termux-setup-storage
             ;;
         2)
             echo "Installing wget..."
@@ -62,7 +58,12 @@ while true; do
             ;;
         9)
             echo "Installing all packages..."
-            pkg install git wget python android-tools curl zip unzip -y
+            pkg install wget -y
+            pkg install python -y
+            pkg install android-tools -y
+            pkg install curl -y
+            pkg install unzip -y
+            pkg install zip -y
             ;;
         10)
             echo "Exiting..."
